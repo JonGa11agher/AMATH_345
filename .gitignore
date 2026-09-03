@@ -1,0 +1,8 @@
+# Jupyter autosave artifacts
+.ipynb_checkpoints/
+
+# Virtual environment (see README setup step 2)
+venv/
+.venv/
+
+__pycache__/

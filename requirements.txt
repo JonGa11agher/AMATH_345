@@ -1,5 +1,11 @@
 jupyterlab
-numpy
-matplotlib
-torch
 ipython
+ipywidgets
+numpy
+scipy
+matplotlib
+Pillow
+scikit-learn
+torch
+torchdiffeq
+pysindy
