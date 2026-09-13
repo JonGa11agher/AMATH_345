@@ -1,5 +1,5 @@
 # AMATH 345
-Interactive Notebooks for **AMATH 345: Data Driven Mathematical Models**, Fall 2025
+Interactive Notebooks for **AMATH 345: Data Driven Mathematical Models**, Fall 2026
 
 ---
 
