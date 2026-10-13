@@ -1,0 +1,330 @@
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{listings} % For code problems
+\usepackage{xcolor}
+\usepackage{graphicx}
+% Code formatting
+\lstset{
+  basicstyle=\ttfamily\small,
+  frame=single,
+  breaklines=true,
+  backgroundcolor=\color{gray!10}
+}
+\usepackage{hyperref}
+
+\begin{document}
+
+\begin{center}
+    {\Large \textbf{AMATH 345: Practice Set \#1 (Fall 2026)} } \\
+    \vspace{0.3cm}
+   % \textit{Due at 6:00 PM, September $24^{th}$, 2025}
+\end{center}
+
+\hrule
+\vspace{0.5em}
+
+\emph{Note:} Marks assigned are meant to be representative of the relative weight that a similar question may be worth on a term test or exam.
+
+\vspace{0.5em}
+\hrule
+
+\vspace{1cm}
+\section*{Q1. (1 mark)}
+
+Prove that \( A^TA\) shares the same null-space as \(A\). That is:
+\[
+\mathbf{N}(A) = \mathbf{N}(A^TA) 
+\]
+
+\section*{Q2. (4 marks)}
+
+
+\begin{enumerate}
+    \item Compute the eigenvalues and eigenvectors of the matrix \(A\). (2 mark)
+\[
+A=\begin{bmatrix}0 & 2 \\ 1 & 1\end{bmatrix},
+\] 
+
+    \item Verify numerically that:
+    \begin{enumerate}
+        \item The trace equals the sum of its eigenvalues. (0.5 mark)
+        \item The determinant equals the product of its eigenvalues. (0.5 mark)
+    \end{enumerate}
+
+    \item Is A diagonalizable? If not, justify, if so, write A in the form \(A = X\Lambda X^{-1}\) (1 mark)
+\end{enumerate}
+
+\section*{Q3. (1 marks)}
+ Suppose matrix \(X\) diagonalizes both matrices \(A\) and \(B\), and that they have the same eigenvectors. Then we  can write:
+\[
+A = X\Lambda_1 X^{-1} ,\quad B = X \Lambda_2 X^{-1}
+\]
+Prove that:
+\[
+AB = BA
+\]
+
+\section*{Q4. (3 marks)}
+
+Let \(f:\mathbb{R}\rightarrow\mathbb{R}\) be convex and nondecreasing, and let
+\(g:\mathbb{R}\rightarrow\mathbb{R}\) be convex.
+
+Prove that the composition
+\[
+h(x) = f(g(x))
+\]
+is convex. Recall that:
+\[
+h:\mathbb{R}\rightarrow\mathbb{R}
+\text{ is convex}
+\]
+if, for every \(\lambda\in[0,1]\) and any \(x,y\in\mathbb{R}\),
+\[
+h(\lambda x+(1-\lambda)y)
+\leq
+\lambda h(x)+(1-\lambda)h(y).
+\]
+
+\section*{Q5. (8 marks)}  %\texbf{Probably remove this!}}
+In this question you will implement Newton's Method from scratch in Python and use it
+to locate a local minimizer of the Rosenbrock function
+\[
+    f(x,y) = 100\,(y - x^2)^2 + (1 - x)^2.
+\]
+
+\begin{enumerate}
+  \item \textbf{ Analytic gradient and Hessian.} (2 marks)\\
+  Derive by hand the gradient and Hessian of $f(x,y)$. Show your work.
+
+  \item \textbf{ Code the gradient and Hessian.} (1 marks)\\
+  In Python, write functions that accept $(x,y)$ and return a NumPy vector and matrix:
+\begin{verbatim}
+def Grad(x, y):
+    """Return numpy array [df/dx, df/dy] at (x,y)."""
+    # your code
+
+def Hessian(x, y):
+    """Return 2x2 numpy array of second derivatives at (x,y)."""
+    # your code
+\end{verbatim}
+
+  \item \textbf{ Implement multivariate Newton's method.} (3 marks)\\
+  Write a function that uses your \texttt{Grad} and \texttt{Hessian} to iterate
+  \[
+    x_{k+1} = x_k + p_k, \quad \text{where } H(x_k)\,p_k = -\nabla f(x_k).
+  \]
+  Stop when $\|\nabla f(x_k)\|_2 < \texttt{tol}$ or when \texttt{max\_iter} is reached. 
+  \emph{You may use \texttt{numpy.linalg} (e.g., \texttt{solve} or \texttt{inv}). Do not use optimization libraries.}
+\newpage
+\begin{verbatim}
+def newton_method(f, grad, hess, x0, tol=1e-6, max_iter=50):
+    """
+    Apply Newton's method to minimize a two-variable function.
+
+    Parameters
+    ----------
+    f : function
+        Function f([x,y]) -> float. The Rosenbrock function in this problem.
+    grad : function
+        Gradient function grad(x,y) -> np.array([df/dx, df/dy]).
+    hess : function
+        Hessian function hess(x,y) -> 2x2 numpy array of second derivatives.
+    x0 : array-like of shape (2,)
+        Initial guess [x0, y0].
+    tol : float, optional (default=1e-6)
+        Stop if the 2-norm of the gradient is less than tol.
+    max_iter : int, optional (default=50)
+        Maximum number of Newton iterations.
+
+    Returns
+    -------
+    x_star : np.array of shape (2,)
+        Final point [x, y] after Newton iterations (approximate minimizer).
+    history : list of dict
+        A list containing information from each iteration. Each entry has keys:
+            {
+                "k"        : iteration number,
+                "x"        : current point [x, y],
+                "f"        : function value f(x,y),
+                "grad_norm": ||grad f(x,y)||_2
+            }
+
+    Example
+    -------
+    >>> x_star, history = newton_method(f_rosenbrock, Grad, Hessian, [0,0])
+    >>> history[0]
+    {'k': 0, 'x': np.array([0.0, 0.0]), 'f': 1.0, 'grad_norm': 2.0}
+    """
+    # your code here
+\end{verbatim}
+\newpage
+\item \textbf{Try (and plot!) multiple initial guesses and comment.} (2 marks) \\
+
+Run your Newton's method implementation starting from at least three different 
+initial guesses chosen from the domain
+\[
+x \in [-5,5], \quad y \in [-5,5].
+\]
+
+For each run, you are asked to:
+
+\begin{enumerate}
+    \item Plot the optimizer trajectory on a contour plot of the Rosenbrock function 
+          (use filled contours and/or log-scale to clearly visualize the valley).
+    \item Report the number of iterations until convergence 
+          ($\|\nabla f(x_k)\|_2 < 10^{-6}$), or state \emph{``did not converge''} 
+          if the method fails within the maximum iteration cap.
+    \item Report the final point $(x^*, y^*)$ and the corresponding function value $f(x^*,y^*)$.
+    \item Write a brief (1--2 sentence) comment on the observed behavior 
+          (e.g., fast vs.\ slow convergence, sensitivity to the initialization).
+\end{enumerate}
+
+\textbf{Note:} You must select different initial guesses in the domain 
+$[-5,5]\times[-5,5]$ and not simply start near the known minimizer $(1,1)$. 
+The point of this exercise is to observe how Newton's method behaves globally.%, you will not be penalized for poor convergence.
+
+\end{enumerate}
+
+\textit{Constraints:} Do not use optimization libraries or automatic differentiation.
+Use only NumPy linear algebra. Cap iterations at \texttt{max\_iter} and clearly
+indicate if the method failed to meet the tolerance given your choice of initial guess.
+
+\section*{Q6. (4 marks)}
+
+Consider:
+\[
+A = 
+\begin{bmatrix}
+ 1 & 2 \\ 2 & 4 \\ 1 & 2
+\end{bmatrix}
+\]
+
+\begin{enumerate}
+    \item find the eigenvalues and eigenvectors of \(A^TA\) (3 marks)
+    \item Compute the "full" SVD of A. (1 mark)
+\end{enumerate}
+
+\section*{Q7. (2 marks)}
+A symmetric matrix $S = S^\top$ has orthonormal eigenvectors $v_1, \dots, v_n$. Then any vector $x$ can be written as a combination
+\[
+x = c_1 v_1 + \cdots + c_n v_n. 
+\]
+Explain the following two formulas:
+\[
+x^\top x = c_1^2 + \cdots + c_n^2,
+\quad \text{(1 mark)} \qquad 
+x^\top Sx = \lambda_1 c_1^2 + \cdots + \lambda_n c_n^2. \quad \text{(1 mark)}
+\]
+
+
+
+
+
+\section*{Q8. (3 marks)}
+
+\begin{enumerate}
+    \item (1 mark)  Why can $r$ orthonormal vectors $u_{1}, \dots, u_{r}$ be   characterized by
+\[
+(m-1) + (m-2) + \cdots + (m-r)
+\]
+parameters?
+    \item (2 marks) Show that an $m \times n$ matrix of rank $r$ has $r(m+n-r)$ free parameters in its singular value decomposition (SVD):
+\[
+A = U \Sigma V^{T} 
+= \underbrace{(m \times r)}_{U} 
+\underbrace{(r \times r)}_{\Sigma} 
+\underbrace{(r \times n)}_{V^{T}}.
+\]
+
+\end{enumerate}
+
+\section*{Q9. (4 marks)}
+
+\[
+\begin{aligned}
+\text{minimize:} \quad & f(x_1,x_2) = x_1^2 + 2x_1x_2 + 2x_2^2 \\[6pt]
+\text{subject to:} \quad & x_1 - x_2 = 2
+\end{aligned}
+\]
+
+
+\section*{Q10. (6 marks)}
+
+Let $A$ be an $m \times n$ real matrix and set $S = A^T A$.
+
+\begin{enumerate}
+    \item (2 marks) Show that maximizing $\|Ax\|^2$ over all nonzero vectors with \(\|x\| = 1 \) is equivalent to maximizing the Rayleigh quotient
+    \[
+        R(x) = \frac{x^T S x}{x^T x}
+    \]
+ over all nonzero vectors.
+    \item (3 marks) Use the method of Lagrange multipliers to maximize $x^T S x$ subject to the constraint $\|x\|^2 = 1$. 
+    Show that the maximizers must satisfy
+    \[
+        Sx = \lambda x
+    \]
+    for some scalar $\lambda$.
+
+    \item (1 mark) Interpret the value of $\lambda$. What does it represent in terms of $\|Ax\|$?
+\end{enumerate}
+
+\newpage
+\section*{Q11. (9 marks) (Programming)}
+
+We work with the famous Iris dataset, which contains $150$ samples of flowers from three species
+(\emph{setosa}, \emph{versicolor}, \emph{virginica}).  
+You can either download the dataset or import it directly in Python from \href{https://archive.ics.uci.edu/dataset/53/iris}{here}.
+Each sample has four measurements: sepal length, sepal width, petal length, and petal width.  Please answer all parts in your Jupyter Notebook, using markdown when necessary for comments or discussion.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Assessment&PracticePbs/PracticeSets/iris.png}
+\end{figure}
+
+Stack the data into a matrix
+\[
+X \in \mathbb{R}^{150 \times 4}.
+\]
+
+\begin{enumerate}
+    \item (\textbf{Centering})  
+    (1 mark) Compute the mean vector
+    \[
+    \mu = \frac{1}{150}\sum_{i=1}^{150} x_i,
+    \]
+    form the centered matrix $X_c = X - \mathbf{1}\mu^\top$, and display $\mu$.  
+    Briefly interpret the meaning of $\mu$.
+
+    \item (\textbf{SVD})  
+    (2 marks) Compute the singular value decomposition
+    \[
+    X_c = U \Sigma V^\top.
+    \]
+    Interpret the right singular vectors (columns of $V$) in this context.  
+    Which flower measurements (sepal length, sepal width, petal length, petal width) dominate the first two singular vectors?
+
+    \item (\textbf{Projection}) (4 marks)  
+    Project the data onto the leading singular vectors and plot the $150$ points in $\mathbb{R}^k$ (color coded by species):
+    \begin{itemize}
+        \item \(k=1\): projection onto the first singular vector.
+        \item \(k=2\): projection onto the first two singular vectors.
+        \item \(k=3\): projection onto the first three singular vectors.
+    \end{itemize}
+    Comment on how the species appear in these lower-dimensional visualizations.
+
+    \item (\textbf{Discussion}) (2 marks)
+    \begin{itemize}
+        \item Why do the first two singular vectors already give a good visualization of the dataset?  
+        \item What do the singular values represent?
+    \end{itemize}
+\end{enumerate}
+
+
+\end{document}
+
+\end{document}
+
