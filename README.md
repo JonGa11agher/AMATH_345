@@ -49,6 +49,9 @@ In the Jupyter interface, open the `Tutorials/` folder and run the cells. The tu
 |---|---|---|
 | 01 | `Tutorial_01_Linear_Algebra` | Matrix operations in NumPy, decompositions, the p-norm unit ball |
 | 02 | `Tutorial_02_Change_of_Basis` | Similar matrices and diagonalization, seen as a change of basis |
+| 03 | `Tutorial_03_Optimization` | Introduction to iterative methods for optimization including Newtons method, and Gradient Descent|
+| 04 | `Tutorial_04_SVD` | Introduction to Singular Value Decomposition, and discussion of the Lp unit ball |
+| 05 | `Tutorial_05_Penalized_Least_Squares` | Introduction to penalized least squares problems, with applications to sparse recovery |
 To be added!
 
 **Every package the tutorials need is in `requirements.txt`**
