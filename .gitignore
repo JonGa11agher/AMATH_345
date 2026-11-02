@@ -6,3 +6,6 @@ venv/
 .venv/
 
 __pycache__/
+
+# Personal tutorial preparation notes (not course material)
+PrivateNotes/
