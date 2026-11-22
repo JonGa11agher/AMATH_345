@@ -49,10 +49,13 @@ In the Jupyter interface, open the `Tutorials/` folder and run the cells. The tu
 |---|---|---|
 | 01 | `Tutorial_01_Linear_Algebra` | Matrix operations in NumPy, decompositions, the p-norm unit ball |
 | 02 | `Tutorial_02_Change_of_Basis` | Similar matrices and diagonalization, seen as a change of basis |
-| 03 | `Tutorial_03_Optimization` | Introduction to iterative methods for optimization including Newtons method, and Gradient Descent|
-| 04 | `Tutorial_04_SVD` | Introduction to Singular Value Decomposition, and discussion of the Lp unit ball |
-| 05 | `Tutorial_05_Penalized_Least_Squares` | Introduction to penalized least squares problems, with applications to sparse recovery |
-To be added!
+| 03 | `Tutorial_03_Optimization` | Gradient descent, learning rates, and optimization of the Rosenbrock function |
+| 04 | `Tutorial_04_SVD` | SVD geometry, image compression, and PCA with eigenfaces |
+| 05 | `Tutorial_05_Penalized_Least_Squares` | Ridge regression, p-norm geometry, and image recovery with total variation |
+| 06 | `Tutorial_06_Sparse_Recovery` | Sparse face reconstruction, basis pursuit, and comparison of ISTA and FISTA |
+| 07 | `Tutorial_07_Curve_Fitting` | Linearized and nonlinear curve fitting, update rules, and convergence comparisons |
+| 08 | `Tutorial_08_ODEs_and_Parameter_Estimation` | Euler/RK2 integration review, pendulum animation, and interactive logistic/oscillator parameter estimation |
+| 09 | `Tutorial_10_Neural_Networks` | Sigmoid neurons as basis functions (1D and 2D) and universal approximation; PyTorch training loops; a wide (1 × 400) vs deep (4 × 20) network with matched parameter counts |
 
 **Every package the tutorials need is in `requirements.txt`**
 Step 3️⃣ above installs all of
