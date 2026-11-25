@@ -55,7 +55,8 @@ In the Jupyter interface, open the `Tutorials/` folder and run the cells. The tu
 | 06 | `Tutorial_06_Sparse_Recovery` | Sparse face reconstruction, basis pursuit, and comparison of ISTA and FISTA |
 | 07 | `Tutorial_07_Curve_Fitting` | Linearized and nonlinear curve fitting, update rules, and convergence comparisons |
 | 08 | `Tutorial_08_ODEs_and_Parameter_Estimation` | Euler/RK2 integration review, pendulum animation, and interactive logistic/oscillator parameter estimation |
-| 09 | `Tutorial_10_Neural_Networks` | Sigmoid neurons as basis functions (1D and 2D) and universal approximation; PyTorch training loops; a wide (1 × 400) vs deep (4 × 20) network with matched parameter counts |
+| 09 | `Tutorial_09_Neural_Networks` | Sigmoid neurons as basis functions (1D and 2D) and universal approximation; PyTorch training loops; a wide (1 × 400) vs deep (4 × 20) network with matched parameter counts |
+| 10 | `Tutorial_10_Neural_ODEs` | An introduction to Neural ODEs, the connection between RES-Net and Euler-Stepping, and the connection to Neural ODE |
 
 **Every package the tutorials need is in `requirements.txt`**
 Step 3️⃣ above installs all of
